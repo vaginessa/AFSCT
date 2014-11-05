@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_adb_and_fastboot_script_creator" default="compile.module.adb_and_fastboot_script_creator">
+  <dirname property="module.adb_and_fastboot_script_creator.basedir" file="${ant.file.module_adb_and_fastboot_script_creator}"/>
+  
+  <property name="module.jdk.home.adb_and_fastboot_script_creator" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.adb_and_fastboot_script_creator" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.adb_and_fastboot_script_creator" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.adb_and_fastboot_script_creator" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="adb_and_fastboot_script_creator.output.dir" value="${module.adb_and_fastboot_script_creator.basedir}/out/production/Adb and fastboot script creator"/>
+  <property name="adb_and_fastboot_script_creator.testoutput.dir" value="${module.adb_and_fastboot_script_creator.basedir}/out/test/Adb and fastboot script creator"/>
+  
+  <path id="adb_and_fastboot_script_creator.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="adb_and_fastboot_script_creator.module.production.classpath">
+    <path refid="${module.jdk.classpath.adb_and_fastboot_script_creator}"/>
+  </path>
+  
+  <path id="adb_and_fastboot_script_creator.runtime.production.module.classpath">
+    <pathelement location="${adb_and_fastboot_script_creator.output.dir}"/>
+  </path>
+  
+  <path id="adb_and_fastboot_script_creator.module.classpath">
+    <path refid="${module.jdk.classpath.adb_and_fastboot_script_creator}"/>
+    <pathelement location="${adb_and_fastboot_script_creator.output.dir}"/>
+  </path>
+  
+  <path id="adb_and_fastboot_script_creator.runtime.module.classpath">
+    <pathelement location="${adb_and_fastboot_script_creator.testoutput.dir}"/>
+    <pathelement location="${adb_and_fastboot_script_creator.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.adb_and_fastboot_script_creator">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.adb_and_fastboot_script_creator">
+    <patternset refid="excluded.from.module.adb_and_fastboot_script_creator"/>
+  </patternset>
+  
+  <path id="adb_and_fastboot_script_creator.module.sourcepath">
+    <dirset dir="${module.adb_and_fastboot_script_creator.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.adb_and_fastboot_script_creator" depends="compile.module.adb_and_fastboot_script_creator.production,compile.module.adb_and_fastboot_script_creator.tests" description="Compile module Adb and fastboot script creator"/>
+  
+  <target name="compile.module.adb_and_fastboot_script_creator.production" depends="register.custom.compilers" description="Compile module Adb and fastboot script creator; production classes">
+    <mkdir dir="${adb_and_fastboot_script_creator.output.dir}"/>
+    <javac2 destdir="${adb_and_fastboot_script_creator.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.adb_and_fastboot_script_creator}/javac">
+      <compilerarg line="${compiler.args.adb_and_fastboot_script_creator}"/>
+      <bootclasspath refid="adb_and_fastboot_script_creator.module.bootclasspath"/>
+      <classpath refid="adb_and_fastboot_script_creator.module.production.classpath"/>
+      <src refid="adb_and_fastboot_script_creator.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.adb_and_fastboot_script_creator"/>
+    </javac2>
+    
+    <copy todir="${adb_and_fastboot_script_creator.output.dir}">
+      <fileset dir="${module.adb_and_fastboot_script_creator.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.adb_and_fastboot_script_creator.tests" depends="register.custom.compilers,compile.module.adb_and_fastboot_script_creator.production" description="compile module Adb and fastboot script creator; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.adb_and_fastboot_script_creator" description="cleanup module">
+    <delete dir="${adb_and_fastboot_script_creator.output.dir}"/>
+    <delete dir="${adb_and_fastboot_script_creator.testoutput.dir}"/>
+  </target>
+</project>

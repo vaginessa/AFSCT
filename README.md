@@ -27,6 +27,7 @@ recovery ----> recovery.img
 Touchwiz samsung phones do not use the fastboot, so if you have a sasmung device ONLY the adb commands will work
 The only exception is Google Play Edtion samsung device
 
+[XDA-Developers](http://forum.xda-developers.com/android/software/tool-adb-fastboot-scripting-automation-t2946760)
 
 
 Matthew Elbing

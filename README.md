@@ -28,6 +28,7 @@ Touchwiz samsung phones do not use the fastboot, so if you have a sasmung device
 The only exception is Google Play Edtion samsung device
 
 [XDA-Developers](http://forum.xda-developers.com/android/software/tool-adb-fastboot-scripting-automation-t2946760)
+
 [github](https://github.com/melbing)
 
 Matthew Elbing
